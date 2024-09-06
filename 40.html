@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="d"></div>
+    <script type="text/babel">
+        var ar = [];
+        function pqr(){
+            var a = document.getElementById("d1").value;
+            ar.push(a);
+            abc();
+        }
+        function abc(){
+            document.getElementById("d3").innerHTML = '';
+            ar.forEach((b,i)=>{
+                var nli = document.createElement("li");
+                nli.innerHTML = b;
+                var dbtn = document.createElement("button");
+                dbtn.innerHTML = 'Delete';
+                dbtn.onclick = function(){deleteTodo(i)};
+                nli.appendChild(dbtn);
+                document.getElementById("d3").appendChild(nli);
+            })
+        }
+        function deleteTodo(i){
+            ar.splice(i,1);
+            abc();
+        }
+        var jsx = <div>
+                    <input type="text" id="d1"/>
+                    <button onClick={pqr}>Click here push value</button>
+                    <ul id="d3"></ul>
+                  </div>
+                  ReactDOM.render(jsx,document.getElementById("d"));
+    </script>
+</body>
+</html>

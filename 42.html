@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="d"></div>
+    <script type="text/babel">
+        var mins = 20;
+        var secs = 0;
+        var interval;
+        function start(){
+            mins = 20;
+            secs = 0;
+            interval = setInterval(()=>{
+                if(secs === 0){
+                    secs = 59;
+                    mins--;
+                    if(mins == -1){
+                        clearInterval(interval);
+                        mins = 0;
+                        secs = 0;
+                    }
+                }
+                else {
+                    secs--;
+                }
+                document.getElementById("m").innerHTML = mins;
+                document.getElementById("s").innerHTML = secs;
+            },1)
+        }
+        function stop(){
+            clearInterval(interval)
+            mins=0;
+            secs=0;
+            document.getElementById("m").innerHTML = mins;
+            document.getElementById("s").innerHTML = secs;
+        }
+
+         function pause(){
+            clearInterval(interval);
+         }
+        
+        var jsx = <div>
+                    <h1>
+                        <span id='m'></span>:<span id='s'></span>
+                    </h1>
+                    <button onClick={start}>Start</button>
+                    <button onClick={stop}>Stop</button>
+                    <button onClick={pause}>Pause</button>
+                  </div>
+        ReactDOM.render(jsx,document.getElementById("d")); 
+        document.getElementById("m").innerHTML = mins;
+        document.getElementById("s").innerHTML = secs;
+    </script>
+</body>
+</html>

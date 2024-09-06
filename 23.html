@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="d"></div>
+    <script type="text/babel">
+        var tech = [];
+        function handleTech(e){
+            if(e.target.checked===false){
+                var i = tech.indexOf(e.target.value);
+                tech.splice(i,1);
+                document.getElementById("d2").innerHTML=tech;
+            }
+            else{
+                tech.push(e.target.value);
+                document.getElementById("d2").innerHTML=tech;
+            }
+            
+        }
+        var jh1 = <div>
+                      <input type="checkbox" onChange={handleTech} value="react"/>:ReactJS <br/>
+                      <input type="checkbox" onChange={handleTech} value="angular"/>:Angular <br/>
+                      <input type="checkbox" onChange={handleTech} value="node"/>:NodeJS <br/>
+                      <input type="checkbox" onChange={handleTech} value="express"/>:ExpressJS <br/>
+                      <input type="checkbox" onChange={handleTech} value="mongo"/>:MongoDB <br/>
+                      <input type="checkbox" onChange={handleTech} value="mongoose"/>:Mongoose <br/>
+                      <input type="checkbox" onChange={handleTech} value="mysql"/>:MySQL <br/>
+                      <h1 id="d2"></h1>
+                  </div>
+        ReactDOM.render(jh1,document.getElementById("d"));
+    </script>
+</body>
+</html>
